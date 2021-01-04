@@ -10,9 +10,12 @@ public class Task_4 {
         String s = scan.nextLine();
 
         char[] result = s.toCharArray();
-
+        if (result[0]>=97 && result[0]<=122)
+            result[0]-=32;
         for(int i=0;i<result.length-1;i++){
-            if (result[i] == ' ')
+
+
+            if (result[i] == ' ' && result[i+1]>=97 && result[i+1]<=122)
                 result[i+1]-=32;
             System.out.print(result[i]);
         }
