@@ -6,13 +6,13 @@ public class Practice3 {
     public static void main(String[] args) {
         print("Enter year: ");
         int year = check();
-        int century = getCentury(year);
+        int century = centuryFromYear(year);
         String result = "In " + year + " there was " + century;
         print(result);
 
     }
 
-    private static int getCentury(int years) {
+    private static int centuryFromYear(int years) {
         int century = years / 100;
         if (years % 100 != 0) {
             century++;
