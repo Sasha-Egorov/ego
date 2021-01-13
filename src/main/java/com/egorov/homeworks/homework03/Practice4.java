@@ -8,7 +8,6 @@ public class Practice4 {
         int age = check();
         print(describeAge(age));
 
-
     }
 
     private static String describeAge(int age) {
