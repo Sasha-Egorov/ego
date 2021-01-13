@@ -9,7 +9,6 @@ public class Practice3 {
         int century = centuryFromYear(year);
         String result = "In " + year + " there was " + century;
         print(result);
-
     }
 
     private static int centuryFromYear(int years) {
