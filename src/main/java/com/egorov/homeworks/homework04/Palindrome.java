@@ -26,7 +26,6 @@ public class Palindrome {
         text = text.toUpperCase(Locale.ROOT);
         text = text.replaceAll("\\s+", "");
         char[] array = text.toCharArray();
-        System.out.println(array.length);
         for (int i = 0; i < array.length; i++) {
             if (array[i] != array[array.length - i - 1]) {
                 return "Sentence is not palindrome";
