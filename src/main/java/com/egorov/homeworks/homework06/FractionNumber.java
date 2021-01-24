@@ -1,6 +1,6 @@
 package com.egorov.homeworks.homework06;
 
-public class FractionNumber implements Fraction{
+public class FractionNumber implements Fraction {
     private int numerator;
     private int denominator;
 
@@ -77,7 +77,7 @@ public class FractionNumber implements Fraction{
     }
 
     public FractionNumber divide(FractionNumber numb) {
-        int b=numb.denominator * this.numerator;
+        int b = numb.denominator * this.numerator;
         numb.denominator = numb.numerator * this.denominator;
         numb.numerator = b;
 
