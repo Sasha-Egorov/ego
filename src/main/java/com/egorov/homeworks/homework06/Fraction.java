@@ -1,11 +1,16 @@
 package com.egorov.homeworks.homework06;
 
 public interface Fraction {
-    FractionNumber plus(FractionNumber numb);
+    int getDenominator();
+     int getNumerator() ;
 
-    FractionNumber minus(FractionNumber numb);
+    Fraction plus(Fraction other);
 
-    FractionNumber multiply(FractionNumber numb);
+    Fraction minus(Fraction other);
 
-    FractionNumber divide(FractionNumber numb);
+    Fraction multiply(Fraction other);
+
+    Fraction divide(Fraction other);
+
 }
+
