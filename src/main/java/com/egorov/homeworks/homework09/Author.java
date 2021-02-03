@@ -1,22 +1,23 @@
 package com.egorov.homeworks.homework09;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public final class Author {
 
     private final String firstName;
     private final String lastName;
-    private final Date dateOfBirth;
+    private final LocalDate dateOfBirth;
 
-    public Author(String firstName, String lastName, Date dateOfBirth) {
+    public Author(String firstName, String lastName, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth =  new Date(dateOfBirth.getTime());
+        this.dateOfBirth =  dateOfBirth;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
 
-        return new Date(dateOfBirth.getTime());
+        return this.dateOfBirth;
     }
 
     public String getFirstName() {
