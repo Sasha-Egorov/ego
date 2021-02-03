@@ -1,18 +1,19 @@
 package com.egorov.homeworks.homework09;
 
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 public final class Book {
 
     private final Author author;
-    private final Date issueDate;
+    private final LocalDate issueDate;
     private final Genre genre;
     private final Long isbn;
 
-    public Book(Author author, Date issueDate, Genre genre, Long isbn) {
+    public Book(Author author, LocalDate issueDate, Genre genre, Long isbn) {
         this.author = author;
-        this.issueDate = new Date(issueDate.getTime());
+        this.issueDate = issueDate;
         this.genre = genre;
         this.isbn = isbn;
     }
@@ -21,8 +22,8 @@ public final class Book {
         return this.author;
     }
 
-    public Date getIssueDate() {
-        return new Date(this.issueDate.getTime());
+    public LocalDate getIssueDate() {
+        return this.issueDate ;
     }
 
     public Genre getGenre() {
