@@ -19,12 +19,8 @@ public abstract class Logger {
         return result;
     }
 
-    public void log(String message) {
+    public abstract void log(String message) ;
 
-    }
-
-    public void log(String message, Level level) {
-
-    }
+    public abstract void log(String message, Level level);
 
 }
