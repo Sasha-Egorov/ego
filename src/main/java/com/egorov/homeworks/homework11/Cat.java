@@ -1,26 +1,33 @@
 package com.egorov.homeworks.homework11;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Cat {
 
-    Queue<Mouse> stomach = new LinkedList<>();
-    Queue<Mouse> substance = new LinkedList<>();
+    TreeSet<Mouse> stomach = new TreeSet<>(new Comparator<Mouse>() {
+        @Override
+        public int compare(Mouse o2, Mouse o1) {
+            return o2.kcal - o1.kcal;
+        }
+    });
 
-    public void eat(Mouse mouse) {
+
+    public boolean eat(Mouse mouse) {
         if (stomach.size() == 5) {
             System.out.println("Belly full of mice, so the cat didn't eat the mouse " + mouse.name);
+            return false;
         } else stomach.add(mouse);
+        return true;
     }
 
-    public Mouse naturalWay() {
-        return stomach.remove();
+    public boolean naturalWay() {
+
+        return stomach.remove(stomach.first());
     }
 
-    public void laxative() {
-        substance.addAll(stomach);
+    public HashSet<Mouse> laxative() {
+        HashSet<Mouse> substance = new HashSet<>(stomach);
         stomach.clear();
-
+        return substance;
     }
 }
