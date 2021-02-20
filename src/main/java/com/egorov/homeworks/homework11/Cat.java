@@ -1,28 +1,34 @@
 package com.egorov.homeworks.homework11;
 
 import java.util.*;
+import java.util.concurrent.PriorityBlockingQueue;
+
 
 public class Cat {
+    PriorityBlockingQueue<Mouse> stomach = new PriorityBlockingQueue<>(5,idComparator);
 
-    TreeSet<Mouse> stomach = new TreeSet<>(new Comparator<Mouse>() {
+    public static Comparator<Mouse> idComparator = new Comparator<Mouse>(){
+
         @Override
-        public int compare(Mouse o2, Mouse o1) {
-            return o2.kcal - o1.kcal;
-        }
-    });
+        public int compare(Mouse o1, Mouse o2) {
+            System.out.println(o2.kcal - o1.kcal);
+            return (o1.getKcal() - o2.getKcal());
 
+        }
+    };
 
     public boolean eat(Mouse mouse) {
         if (stomach.size() == 5) {
             System.out.println("Belly full of mice, so the cat didn't eat the mouse " + mouse.name);
             return false;
+
         } else stomach.add(mouse);
         return true;
     }
 
-    public boolean naturalWay() {
+    public Mouse naturalWay() {
 
-        return stomach.remove(stomach.first());
+        return stomach.remove();
     }
 
     public HashSet<Mouse> laxative() {
