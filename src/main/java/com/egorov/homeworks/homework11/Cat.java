@@ -11,8 +11,7 @@ public class Cat {
 
         @Override
         public int compare(Mouse o1, Mouse o2) {
-            System.out.println(o2.kcal - o1.kcal);
-            return (o1.getKcal() - o2.getKcal());
+            return o1.kcal - o2.kcal;
 
         }
     };
