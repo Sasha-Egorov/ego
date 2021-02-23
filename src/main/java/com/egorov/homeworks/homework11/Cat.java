@@ -1,26 +1,38 @@
 package com.egorov.homeworks.homework11;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
+import java.util.concurrent.PriorityBlockingQueue;
+
 
 public class Cat {
+    PriorityBlockingQueue<Mouse> stomach = new PriorityBlockingQueue<>(5,idComparator);
 
-    Queue<Mouse> stomach = new LinkedList<>();
-    Queue<Mouse> substance = new LinkedList<>();
+    public static Comparator<Mouse> idComparator = new Comparator<Mouse>(){
 
-    public void eat(Mouse mouse) {
+        @Override
+        public int compare(Mouse o1, Mouse o2) {
+            return o1.kcal - o2.kcal;
+
+        }
+    };
+
+    public boolean eat(Mouse mouse) {
         if (stomach.size() == 5) {
             System.out.println("Belly full of mice, so the cat didn't eat the mouse " + mouse.name);
+            return false;
+
         } else stomach.add(mouse);
+        return true;
     }
 
     public Mouse naturalWay() {
+
         return stomach.remove();
     }
 
-    public void laxative() {
-        substance.addAll(stomach);
+    public HashSet<Mouse> laxative() {
+        HashSet<Mouse> substance = new HashSet<>(stomach);
         stomach.clear();
-
+        return substance;
     }
 }
