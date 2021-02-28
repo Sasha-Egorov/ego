@@ -1,6 +1,11 @@
 package com.egorov.homeworks.homework14;
 
-public class Person {
+import lombok.Builder;
+
+import java.io.Serializable;
+
+@Builder
+public class Person implements Serializable {
     String name;
     String surname;
     int age;
