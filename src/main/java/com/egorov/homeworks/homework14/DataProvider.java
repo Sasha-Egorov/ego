@@ -3,17 +3,23 @@ package com.egorov.homeworks.homework14;
 import java.io.*;
 import java.util.ArrayList;
 
-public class DataProvider implements DataProviderImp {
+public class DataProvider {
+    DataMapper dataMapper;
 
 
-    public ArrayList<Person> provide(String fileName) {
+    public ArrayList<Person> provide() {
         ArrayList<Person> people = new ArrayList<>();
 
-        try (ObjectInputStream obj = new ObjectInputStream(new FileInputStream(fileName))) {
-            Object o = obj.readObject();
-            people = (ArrayList<Person>) o;
+        try (FileReader fileReader = new FileReader("not.txt");
+             BufferedReader reader = new BufferedReader(fileReader)) {
+            String str;
 
-        } catch (IOException | ClassNotFoundException e) {
+            while ((str = reader.readLine()) != null) {
+
+                people.add(dataMapper.map(str));
+
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return people;
