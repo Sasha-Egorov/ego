@@ -1,0 +1,78 @@
+PRAGMA foreign_keys=on;
+
+drop table users;
+create table users
+(
+  id integer primary key,
+  name text,
+  login text,
+  password text,
+  roles_id integer NOT NULL,
+  FOREIGN KEY (roles_id) REFERENCES roles(id)
+);
+
+SELECT * from users WHERE roles_id = '1';
+
+SELECT * from userGroups ug
+join users u on ug.groups_id = '1'
+
+
+insert into users (name, login, password, roles_id) values
+  ('Alexandr Alexandrov', 'alex', 'asd123',1),
+  ('BBBBBBBBBBBBBUUUUUUndr Alexandrov', 'alex', 'asd123',1),
+  ('Ivan Ivanov', 'vanya', '123456',2),
+  ('Pavel Pavlov', 'pasha', '1q2w3e',3),
+  ('Vladimir Vladimirov', 'vova', 'qwe123',4);
+
+-- user can be a member of many groups
+create table groups
+(
+  id integer primary key,
+  name text,
+  description text
+);
+
+insert into groups (name, description) values
+('inters', 'potential workers'),
+('workers', 'only company workers'),
+('managers', 'managers only'),
+('contractors', 'part time workers'),
+('guests', 'potential clients'),
+('clients', 'company clients');
+
+-- user can have only one role
+create table roles
+(
+  id integer primary key,
+  name text,
+  description text
+);
+
+insert into roles (name, description) values
+  ('visitor', 'readonly user'),
+  ('user','Can create data, update and delete own data'),
+  ('content_manage', 'can create, update, and delete any data'),
+  ('administrator', 'full data access, can create users');
+
+drop table result;
+
+  CREATE TABLE userGroups (
+userGroups_id integer primary key,
+users_id INTEGER NOT NULL,
+groups_id INTEGER NOT NULL,
+FOREIGN KEY (users_id) REFERENCES users(id)
+FOREIGN KEY (groups_id) REFERENCES groups(id)
+);
+
+Delete from userGroups WHERE users_id = '1';
+
+insert into userGroups(users_id, groups_id) values
+(1,1),
+(1,2),
+(1,3),
+(2,1);
+
+SELECT groups_id from userGroups WHERE users_id = ?
+
+SELECT * from users WHERE roles_id = '1'
+join  roles r  on u.roles_id = r.id;
