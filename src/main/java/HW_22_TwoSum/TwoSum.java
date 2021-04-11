@@ -10,6 +10,7 @@ public class TwoSum {
         int[] nums = {2, 15, 11, 7};
         System.out.println(Arrays.toString(twoSum(nums, target)));
     }
+
     public static int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> numMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
